@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CryptoCalc — Profit Calculator</title>
+
+  <!-- ✅ Security headers -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src https://api.coingecko.com; frame-ancestors 'none'; form-action 'none';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="Referrer-Policy" content="no-referrer" />
+  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lora:ital,wght@0,500;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+  <div class="bg-orb orb3"></div>
+
+  <!-- TOP AD BANNER -->
+  <div class="ad-banner ad-top">
+    <span class="ad-label">Advertisement</span>
+    <!--
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    -->
+    <div class="ad-placeholder">Google AdSense — Top Banner (728×90)</div>
+  </div>
+
+  <div class="page-wrapper">
+
+    <header class="site-header">
+      <div class="logo-row">
+        <div class="logo-icon" aria-hidden="true">₿</div>
+        <div class="logo-text">
+          <h1 class="logo">CryptoCalc</h1>
+          <p class="tagline">Your friendly profit calculator</p>
+        </div>
+      </div>
+
+      <p class="pill-hint">Optional: tap a coin to label your results</p>
+      <div class="coin-pills" role="listbox" aria-label="Select a cryptocurrency">
+        <button class="pill" role="option" aria-selected="false" data-coin="BTC" type="button">
+          🟠 BTC<span class="pill-check" aria-hidden="true">✓</span>
+        </button>
+        <button class="pill" role="option" aria-selected="false" data-coin="ETH" type="button">
+          🔵 ETH<span class="pill-check" aria-hidden="true">✓</span>
+        </button>
+        <button class="pill" role="option" aria-selected="false" data-coin="SOL" type="button">
+          🟣 SOL<span class="pill-check" aria-hidden="true">✓</span>
+        </button>
+        <button class="pill" role="option" aria-selected="false" data-coin="XRP" type="button">
+          🔷 XRP<span class="pill-check" aria-hidden="true">✓</span>
+        </button>
+        <button class="pill" role="option" aria-selected="false" data-coin="BNB" type="button">
+          🟡 BNB<span class="pill-check" aria-hidden="true">✓</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="main-layout">
+
+      <aside class="ad-sidebar">
+        <span class="ad-label">Advertisement</span>
+        <div class="ad-placeholder vertical">Google AdSense<br/>160×600</div>
+      </aside>
+
+      <section class="calc-card">
+
+        <p class="section-label" id="section-label">💰 Enter your trade details</p>
+
+        <div class="input-grid">
+          <div class="input-group">
+            <label for="buyPrice">Buy Price</label>
+            <div class="input-wrap">
+              <span class="prefix">$</span>
+              <input type="number" id="buyPrice" placeholder="e.g. 30000" min="0" max="999999999" step="any" autocomplete="off" />
+            </div>
+            <span class="input-hint">Price you paid per coin</span>
+          </div>
+
+          <div class="input-group">
+            <label for="sellPrice">Sell Price</label>
+            <div class="input-wrap">
+              <span class="prefix">$</span>
+              <input type="number" id="sellPrice" placeholder="e.g. 45000" min="0" max="999999999" step="any" autocomplete="off" />
+            </div>
+            <span class="input-hint">Price you sold or plan to sell</span>
+          </div>
+
+          <div class="input-group full-width">
+            <label for="amount">Number of Coins</label>
+            <div class="input-wrap">
+              <span class="prefix">🪙</span>
+              <input type="number" id="amount" placeholder="e.g. 0.5" min="0" max="999999999" step="any" autocomplete="off" />
+            </div>
+            <span class="input-hint">How many coins or tokens</span>
+          </div>
+        </div>
+
+        <button class="calc-btn" id="calcBtn" type="button" onclick="calculate()">
+          Calculate My Profit ✨
+        </button>
+
+        <div class="results-panel" id="results">
+
+          <div class="verdict-banner" id="verdict-banner">
+            <span class="verdict-emoji" id="verdict-emoji">🎉</span>
+            <div class="verdict-copy">
+              <div class="verdict-title" id="verdict-title">Nice trade!</div>
+              <div class="verdict-sub" id="verdict-sub">Here's your full breakdown</div>
+            </div>
+          </div>
+
+          <div class="results-grid">
+            <div class="result-card">
+              <div class="res-icon">💵</div>
+              <div class="res-label">You Invested</div>
+              <div class="res-value" id="val-invested">—</div>
+            </div>
+            <div class="result-card">
+              <div class="res-icon">📤</div>
+              <div class="res-label">Return Value</div>
+              <div class="res-value" id="val-return">—</div>
+            </div>
+            <div class="result-card result-accent" id="res-profit-card">
+              <div class="res-icon" id="profit-icon">🏆</div>
+              <div class="res-label">Net Profit / Loss</div>
+              <div class="res-value res-large" id="val-profit">—</div>
+            </div>
+            <div class="result-card result-accent2">
+              <div class="res-icon">📊</div>
+              <div class="res-label">ROI</div>
+              <div class="res-value res-large" id="val-roi">—</div>
+            </div>
+          </div>
+
+          <div class="roi-track-wrap">
+            <div class="roi-track-labels">
+              <span>−100%</span>
+              <span>Break even</span>
+              <span>+200%</span>
+            </div>
+            <div class="roi-track">
+              <div class="roi-fill" id="roi-fill"></div>
+              <div class="roi-needle" id="roi-needle"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="reset-btn" id="resetBtn" type="button" onclick="resetCalc()">↺ Start over</button>
+
+      </section>
+
+      <aside class="ad-sidebar">
+        <span class="ad-label">Advertisement</span>
+        <div class="ad-placeholder vertical">Google AdSense<br/>160×600</div>
+      </aside>
+
+    </main>
+
+    <div class="ad-banner ad-mid">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-placeholder">Google AdSense — Mid Banner (728×90)</div>
+    </div>
+
+    <section class="info-section">
+      <h2 class="info-title">How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-bubble">1</div>
+          <div class="step-body">
+            <strong>Enter buy price</strong>
+            <p>The price per coin when you bought in.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-bubble">2</div>
+          <div class="step-body">
+            <strong>Enter sell price</strong>
+            <p>Current price or your target exit.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-bubble">3</div>
+          <div class="step-body">
+            <strong>Enter your amount</strong>
+            <p>Coins or tokens you're calculating for.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-bubble">✨</div>
+          <div class="step-body">
+            <strong>See your results</strong>
+            <p>Instant profit, loss &amp; ROI — free, always.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ad-banner ad-bottom">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-placeholder">Google AdSense — Bottom Banner (728×90)</div>
+    </div>
+
+    <footer class="site-footer">
+      <p>Made with ☀️ by CryptoCalc &nbsp;·&nbsp; For informational purposes only — not financial advice.</p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -3,114 +3,89 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CryptoCalc — Profit Calculator</title>
-
-  <!-- ✅ Security headers -->
-  <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src https://api.coingecko.com; frame-ancestors 'none'; form-action 'none';" />
+  <title>Crypto Profit Calculator — Free Bitcoin & Crypto ROI Calculator | ToolSuite</title>
+  <meta name="description" content="Free crypto profit calculator. Instantly calculate your Bitcoin, Ethereum, Solana profit or loss and ROI percentage. No sign-up needed. Live prices included." />
+  <meta name="keywords" content="crypto profit calculator, bitcoin profit calculator, ethereum profit calculator, crypto ROI calculator, crypto loss calculator, how much profit from crypto, BTC profit, ETH profit calculator free" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://yourdomain.com/index.html" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Free Crypto Profit Calculator — Bitcoin, ETH, SOL ROI" />
+  <meta property="og:description" content="Calculate your crypto profit, loss and ROI instantly. Supports BTC, ETH, SOL, XRP, BNB with live prices." />
+  <meta property="og:type" content="website" />
+  <!-- Security -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src https://api.coingecko.com; frame-ancestors 'none'; form-action 'none';" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="DENY" />
   <meta http-equiv="Referrer-Policy" content="no-referrer" />
-  <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()" />
-
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="shared.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Lora:ital,wght@0,500;1,400&display=swap" rel="stylesheet" />
+  <!-- AdSense — uncomment when approved -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
 </head>
 <body>
-
   <div class="bg-orb orb1"></div>
   <div class="bg-orb orb2"></div>
   <div class="bg-orb orb3"></div>
 
-  <!-- TOP AD BANNER -->
+  <!-- NAV -->
+  <nav class="site-nav" aria-label="ToolSuite navigation">
+    <a class="nav-link active" href="index.html">₿ Crypto Calc</a>
+    <a class="nav-link" href="gpa.html">🎓 GPA Calc</a>
+    <a class="nav-link" href="sensitivity.html">🎮 Sensitivity Calc</a>
+    <a class="nav-link" href="pdf.html">📄 PDF Editor</a>
+    <a class="nav-link" href="downloader.html">⬇️ Video Downloader</a>
+  </nav>
+
+  <!-- AD (hidden until AdSense approved) -->
   <div class="ad-banner ad-top">
-    <span class="ad-label">Advertisement</span>
-    <!--
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    -->
-    <div class="ad-placeholder">Google AdSense — Top Banner (728×90)</div>
+    <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins> -->
   </div>
 
   <div class="page-wrapper">
-
     <header class="site-header">
       <div class="logo-row">
         <div class="logo-icon" aria-hidden="true">₿</div>
         <div class="logo-text">
-          <h1 class="logo">CryptoCalc</h1>
-          <p class="tagline">Your friendly profit calculator</p>
+          <h1 class="logo">Crypto Profit Calculator</h1>
+          <p class="tagline">Instant Bitcoin, Ethereum & altcoin ROI — free, no sign-up</p>
         </div>
       </div>
-
-      <p class="pill-hint">Optional: tap a coin to label your results</p>
+      <p class="pill-hint">Tap a coin to auto-fill the live buy price</p>
       <div class="coin-pills" role="listbox" aria-label="Select a cryptocurrency">
-        <button class="pill" role="option" aria-selected="false" data-coin="BTC" type="button">
-          🟠 BTC<span class="pill-check" aria-hidden="true">✓</span>
-        </button>
-        <button class="pill" role="option" aria-selected="false" data-coin="ETH" type="button">
-          🔵 ETH<span class="pill-check" aria-hidden="true">✓</span>
-        </button>
-        <button class="pill" role="option" aria-selected="false" data-coin="SOL" type="button">
-          🟣 SOL<span class="pill-check" aria-hidden="true">✓</span>
-        </button>
-        <button class="pill" role="option" aria-selected="false" data-coin="XRP" type="button">
-          🔷 XRP<span class="pill-check" aria-hidden="true">✓</span>
-        </button>
-        <button class="pill" role="option" aria-selected="false" data-coin="BNB" type="button">
-          🟡 BNB<span class="pill-check" aria-hidden="true">✓</span>
-        </button>
+        <button class="pill" role="option" aria-selected="false" data-coin="BTC" type="button">🟠 BTC<span class="pill-check" aria-hidden="true">✓</span></button>
+        <button class="pill" role="option" aria-selected="false" data-coin="ETH" type="button">🔵 ETH<span class="pill-check" aria-hidden="true">✓</span></button>
+        <button class="pill" role="option" aria-selected="false" data-coin="SOL" type="button">🟣 SOL<span class="pill-check" aria-hidden="true">✓</span></button>
+        <button class="pill" role="option" aria-selected="false" data-coin="XRP" type="button">🔷 XRP<span class="pill-check" aria-hidden="true">✓</span></button>
+        <button class="pill" role="option" aria-selected="false" data-coin="BNB" type="button">🟡 BNB<span class="pill-check" aria-hidden="true">✓</span></button>
       </div>
     </header>
 
     <main class="main-layout">
+      <aside class="ad-sidebar"><!-- AdSense 160x600 --></aside>
 
-      <aside class="ad-sidebar">
-        <span class="ad-label">Advertisement</span>
-        <div class="ad-placeholder vertical">Google AdSense<br/>160×600</div>
-      </aside>
-
-      <section class="calc-card">
-
+      <section class="calc-card" aria-label="Crypto profit calculator">
         <p class="section-label" id="section-label">💰 Enter your trade details</p>
-
         <div class="input-grid">
           <div class="input-group">
             <label for="buyPrice">Buy Price</label>
-            <div class="input-wrap">
-              <span class="prefix">$</span>
-              <input type="number" id="buyPrice" placeholder="e.g. 30000" min="0" max="999999999" step="any" autocomplete="off" />
-            </div>
+            <div class="input-wrap"><span class="prefix">$</span><input type="number" id="buyPrice" placeholder="e.g. 30000" min="0" max="999999999" step="any" autocomplete="off" /></div>
             <span class="input-hint">Price you paid per coin</span>
           </div>
-
           <div class="input-group">
             <label for="sellPrice">Sell Price</label>
-            <div class="input-wrap">
-              <span class="prefix">$</span>
-              <input type="number" id="sellPrice" placeholder="e.g. 45000" min="0" max="999999999" step="any" autocomplete="off" />
-            </div>
+            <div class="input-wrap"><span class="prefix">$</span><input type="number" id="sellPrice" placeholder="e.g. 45000" min="0" max="999999999" step="any" autocomplete="off" /></div>
             <span class="input-hint">Price you sold or plan to sell</span>
           </div>
-
           <div class="input-group full-width">
             <label for="amount">Number of Coins</label>
-            <div class="input-wrap">
-              <span class="prefix">🪙</span>
-              <input type="number" id="amount" placeholder="e.g. 0.5" min="0" max="999999999" step="any" autocomplete="off" />
-            </div>
-            <span class="input-hint">How many coins or tokens</span>
+            <div class="input-wrap"><span class="prefix">🪙</span><input type="number" id="amount" placeholder="e.g. 0.5" min="0" max="999999999" step="any" autocomplete="off" /></div>
+            <span class="input-hint">How many coins or tokens you hold</span>
           </div>
         </div>
-
-        <button class="calc-btn" id="calcBtn" type="button" onclick="calculate()">
-          Calculate My Profit ✨
-        </button>
+        <button class="calc-btn" type="button" onclick="calculate()">Calculate My Profit ✨</button>
 
         <div class="results-panel" id="results">
-
           <div class="verdict-banner" id="verdict-banner">
             <span class="verdict-emoji" id="verdict-emoji">🎉</span>
             <div class="verdict-copy">
@@ -118,105 +93,97 @@
               <div class="verdict-sub" id="verdict-sub">Here's your full breakdown</div>
             </div>
           </div>
-
           <div class="results-grid">
-            <div class="result-card">
-              <div class="res-icon">💵</div>
-              <div class="res-label">You Invested</div>
-              <div class="res-value" id="val-invested">—</div>
-            </div>
-            <div class="result-card">
-              <div class="res-icon">📤</div>
-              <div class="res-label">Return Value</div>
-              <div class="res-value" id="val-return">—</div>
-            </div>
-            <div class="result-card result-accent" id="res-profit-card">
-              <div class="res-icon" id="profit-icon">🏆</div>
-              <div class="res-label">Net Profit / Loss</div>
-              <div class="res-value res-large" id="val-profit">—</div>
-            </div>
-            <div class="result-card result-accent2">
-              <div class="res-icon">📊</div>
-              <div class="res-label">ROI</div>
-              <div class="res-value res-large" id="val-roi">—</div>
-            </div>
+            <div class="result-card"><div class="res-icon">💵</div><div class="res-label">You Invested</div><div class="res-value" id="val-invested">—</div></div>
+            <div class="result-card"><div class="res-icon">📤</div><div class="res-label">Return Value</div><div class="res-value" id="val-return">—</div></div>
+            <div class="result-card result-accent" id="res-profit-card"><div class="res-icon" id="profit-icon">🏆</div><div class="res-label">Net Profit / Loss</div><div class="res-value res-large" id="val-profit">—</div></div>
+            <div class="result-card result-accent2"><div class="res-icon">📊</div><div class="res-label">ROI</div><div class="res-value res-large" id="val-roi">—</div></div>
           </div>
-
           <div class="roi-track-wrap">
-            <div class="roi-track-labels">
-              <span>−100%</span>
-              <span>Break even</span>
-              <span>+200%</span>
-            </div>
-            <div class="roi-track">
-              <div class="roi-fill" id="roi-fill"></div>
-              <div class="roi-needle" id="roi-needle"></div>
-            </div>
+            <div class="roi-track-labels"><span>−100%</span><span>Break even</span><span>+200%</span></div>
+            <div class="roi-track"><div class="roi-fill" id="roi-fill"></div><div class="roi-needle" id="roi-needle"></div></div>
           </div>
-
         </div>
-
         <button class="reset-btn" id="resetBtn" type="button" onclick="resetCalc()">↺ Start over</button>
-
       </section>
 
-      <aside class="ad-sidebar">
-        <span class="ad-label">Advertisement</span>
-        <div class="ad-placeholder vertical">Google AdSense<br/>160×600</div>
-      </aside>
-
+      <aside class="ad-sidebar"><!-- AdSense 160x600 --></aside>
     </main>
 
-    <div class="ad-banner ad-mid">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-placeholder">Google AdSense — Mid Banner (728×90)</div>
-    </div>
+    <!-- AD mid (hidden) -->
+    <div class="ad-banner ad-mid"><!-- AdSense --></div>
 
-    <section class="info-section">
+    <!-- HOW IT WORKS -->
+    <section class="info-section" aria-label="How to use the crypto profit calculator">
       <h2 class="info-title">How it works</h2>
       <div class="steps">
-        <div class="step">
-          <div class="step-bubble">1</div>
-          <div class="step-body">
-            <strong>Enter buy price</strong>
-            <p>The price per coin when you bought in.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-bubble">2</div>
-          <div class="step-body">
-            <strong>Enter sell price</strong>
-            <p>Current price or your target exit.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-bubble">3</div>
-          <div class="step-body">
-            <strong>Enter your amount</strong>
-            <p>Coins or tokens you're calculating for.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-bubble">✨</div>
-          <div class="step-body">
-            <strong>See your results</strong>
-            <p>Instant profit, loss &amp; ROI — free, always.</p>
-          </div>
-        </div>
+        <div class="step"><div class="step-bubble">1</div><div class="step-body"><strong>Select your coin</strong><p>Tap BTC, ETH, SOL or any coin to auto-fill the live market price.</p></div></div>
+        <div class="step"><div class="step-bubble">2</div><div class="step-body"><strong>Enter sell price</strong><p>Your target exit price or the price you already sold at.</p></div></div>
+        <div class="step"><div class="step-bubble">3</div><div class="step-body"><strong>Enter your amount</strong><p>The number of coins or tokens in your trade.</p></div></div>
+        <div class="step"><div class="step-bubble">✨</div><div class="step-body"><strong>See your results</strong><p>Instant profit, loss & ROI — no account needed, always free.</p></div></div>
       </div>
     </section>
 
-    <div class="ad-banner ad-bottom">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-placeholder">Google AdSense — Bottom Banner (728×90)</div>
-    </div>
+    <!-- SEO CONTENT -->
+    <article class="seo-section">
+      <h2>The Free Crypto Profit Calculator You Actually Need</h2>
+      <p>Whether you're a seasoned Bitcoin trader or just getting started with Ethereum, knowing your exact profit or loss before making a move is essential. Our <strong>free crypto profit calculator</strong> gives you instant, accurate results — no spreadsheets, no sign-up, no fees.</p>
+      <p>Simply enter your <strong>buy price</strong>, your <strong>sell price</strong>, and the <strong>number of coins</strong> you hold. We'll instantly show you your net profit or loss in dollars, your <strong>return on investment (ROI) percentage</strong>, and a visual breakdown of how your trade performed.</p>
+
+      <h3>How to Calculate Crypto Profit</h3>
+      <p>The formula is straightforward: <strong>Profit = (Sell Price − Buy Price) × Amount</strong>. ROI is calculated as <strong>((Sell Price − Buy Price) / Buy Price) × 100</strong>. For example, if you bought 1 Bitcoin at $30,000 and it's now worth $45,000, your profit is $15,000 and your ROI is 50%. Our calculator does this math instantly for any coin and any amount.</p>
+
+      <h3>Supports Bitcoin, Ethereum, Solana, XRP, BNB & More</h3>
+      <p>Tap any of the coin buttons at the top to automatically load the <strong>live market price</strong> directly from CoinGecko — one of the most trusted crypto data sources in the world. This means your buy price is always current, so you can calculate profit in real-time as prices move. Supported coins include <strong>Bitcoin (BTC)</strong>, <strong>Ethereum (ETH)</strong>, <strong>Solana (SOL)</strong>, <strong>XRP</strong>, and <strong>Binance Coin (BNB)</strong>.</p>
+
+      <h3>Why Use a Crypto Profit Calculator?</h3>
+      <ul>
+        <li>📈 <strong>Track your gains</strong> — Know exactly how much you've made on a trade before selling.</li>
+        <li>📉 <strong>Understand your losses</strong> — See how far a coin needs to recover before you break even.</li>
+        <li>🧮 <strong>Plan your exit strategy</strong> — Set a target sell price and see what ROI you'd achieve.</li>
+        <li>💡 <strong>Compare investments</strong> — Calculate ROI across multiple coins side by side.</li>
+        <li>🔒 <strong>Private and secure</strong> — All calculations happen in your browser. We never see your numbers.</li>
+      </ul>
+
+      <h3>What is ROI in Crypto?</h3>
+      <p><strong>Return on Investment (ROI)</strong> is the percentage gain or loss relative to your original investment. A 100% ROI means you doubled your money. A −50% ROI means you lost half. In the volatile world of cryptocurrency, tracking ROI helps you make smarter decisions about when to hold, sell, or take profit.</p>
+
+      <h3>Frequently Asked Questions</h3>
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-q" type="button">How do I calculate Bitcoin profit? <span class="faq-icon">+</span></button><div class="faq-a">Enter your Bitcoin buy price, your sell price, and how many BTC you own. The calculator will instantly show your profit in USD and your ROI percentage.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button">Is this crypto calculator free? <span class="faq-icon">+</span></button><div class="faq-a">Yes, 100% free. No account, no email, no subscription. Just open the page and start calculating.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button">Does it use live crypto prices? <span class="faq-icon">+</span></button><div class="faq-a">Yes! Tap any coin pill (BTC, ETH, SOL, XRP, BNB) to auto-load the current live price via the CoinGecko API. Prices refresh every 60 seconds.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button">Can I calculate loss too? <span class="faq-icon">+</span></button><div class="faq-a">Absolutely. If your sell price is lower than your buy price, the calculator will show your loss in red, along with the negative ROI percentage.</div></div>
+        <div class="faq-item"><button class="faq-q" type="button">Is my data private? <span class="faq-icon">+</span></button><div class="faq-a">Yes. All calculations run entirely in your browser. We don't collect, store or transmit any of your trade data.</div></div>
+      </div>
+    </article>
+
+    <div class="ad-banner ad-bottom"><!-- AdSense --></div>
 
     <footer class="site-footer">
-      <p>Made with ☀️ by CryptoCalc &nbsp;·&nbsp; For informational purposes only — not financial advice.</p>
+      <div class="footer-links">
+        <a href="index.html">Crypto Calculator</a>
+        <a href="gpa.html">GPA Calculator</a>
+        <a href="sensitivity.html">Sensitivity Calculator</a>
+        <a href="pdf.html">PDF Editor</a>
+        <a href="downloader.html">Video Downloader</a>
+      </div>
+      <p>Made with ☀️ by ToolSuite &nbsp;·&nbsp; For informational purposes only — not financial advice.</p>
     </footer>
-
   </div>
 
   <script src="script.js"></script>
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const ans = btn.nextElementSibling;
+        const isOpen = ans.classList.contains('open');
+        document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+        document.querySelectorAll('.faq-q').forEach(b => b.classList.remove('open'));
+        if (!isOpen) { ans.classList.add('open'); btn.classList.add('open'); }
+      });
+    });
+  </script>
 </body>
 </html>
